@@ -19,7 +19,8 @@ module.exports = function(grunt) {
     console.log("a");
     this.files.forEach(function(file) {
       remainingFiles++;
-      var options = self.options({output: file.dest, args: [file.src[0]]});
+      var options = {output: file.dest, args: [file.src[0]]};
+      for (k in self.options) options[k] = self.options[k];
       docco.document(options, onDoccoComplete);
     });
   });
