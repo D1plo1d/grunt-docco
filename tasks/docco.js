@@ -16,7 +16,8 @@ module.exports = function(grunt) {
     var done = this.async();
     var remainingFiles = 0;
     var onDoccoComplete = function() {
-      if (remainingFiles-- == 0) done();
+      remainingFiles -= 1;
+      if (remainingFiles == 0) done();
     };
 
     this.files.forEach(function(file) {
